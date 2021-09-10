@@ -2,6 +2,7 @@ class HomesController < ApplicationController
   def top
   end
 
-  def shikoku
+  def region
+    render :partial => "homes/#{params[:region]}"
   end
 end

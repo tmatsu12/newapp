@@ -11,5 +11,6 @@ class User < ApplicationRecord
     end
   end
 
-  belongs_to :prefecture
+  belongs_to :prefecture1, class_name: "Prefecture"
+  belongs_to :prefecture2, class_name: "Prefecture"
 end

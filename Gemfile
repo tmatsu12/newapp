@@ -71,4 +71,6 @@ gem 'jquery-rails'
 gem 'jcanvas-rails', '~> 0.1.0'
 gem 'font-awesome-sass', '~> 5.13'
 
+gem 'seed-fu'
+
 

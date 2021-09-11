@@ -10,4 +10,6 @@ class User < ApplicationRecord
       user.name = "ゲスト"
     end
   end
+
+  belongs_to :prefecture
 end

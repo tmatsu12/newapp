@@ -2,7 +2,16 @@
 
   <div class="row">
 
-    <div class="col-9"><a>a</a></div>
+    <div class="col-9 mt-5 d-flex flex-wrap">
+      <div class="mb-3 mr-2">
+        <!--link_toで写真と文字を囲う-->
+        <%= image_tag 'kagawa.jpeg', size: "190x190" %>
+        <p class="text-center">kagawa</p>
+      </div>
+      <div class="mb-3 mr-2"><%= image_tag 'tokushima.jpeg', size: "190x190" %></div>
+      <div class="mb-3 mr-2"><%= image_tag 'ehime.jpeg', size: "190x190" %></div>
+      <div class="mb-3 mr-2"><%= image_tag 'kouchi.jpeg', size: "190x190" %></div>
+    </div>
 
     <div class="col-3"><p>side</p></div>
 

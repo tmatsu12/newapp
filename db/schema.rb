@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_044002) do
+ActiveRecord::Schema.define(version: 2021_09_11_110252) do
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
+    t.integer "user_id"
+    t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -21,7 +38,13 @@ ActiveRecord::Schema.define(version: 2021_09_08_044002) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture1_id"
+    t.integer "prefecture2_id"
+    t.integer "prefecture3_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["prefecture1_id"], name: "index_users_on_prefecture1_id"
+    t.index ["prefecture2_id"], name: "index_users_on_prefecture2_id"
+    t.index ["prefecture3_id"], name: "index_users_on_prefecture3_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

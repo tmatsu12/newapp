@@ -13,4 +13,5 @@ class User < ApplicationRecord
 
   belongs_to :prefecture1, class_name: "Prefecture"
   belongs_to :prefecture2, class_name: "Prefecture"
+  has_many :posts, dependent: :destroy
 end

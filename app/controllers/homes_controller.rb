@@ -4,6 +4,6 @@ class HomesController < ApplicationController
 
   def region
     # render :partial => "homes/#{params[:region]}"
-    render "homes/#{params[:region]}"
+    render "region/#{params[:region]}"
   end
 end

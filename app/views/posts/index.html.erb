@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-9 mt-5">
+      <% if @posts.exists? %>
+        <%= @posts.count %>件の投稿
+        <% @posts.each do |post| %>
+          <%= post.title %>
+          <%= post.body %>
+        <% end %>
+      <% else %>
+        "まだ投稿はありません"
+      <% end %>
+    </div>
+
+    <div class="col-3"><p>side</p></div>
+
+  </div>
+
+</div>

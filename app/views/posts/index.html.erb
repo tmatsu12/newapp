@@ -4,16 +4,43 @@
 
     <div class="col-9 mt-5">
 
-      <h1><%= @prefecture.name%></h1>
+      <h1 class="border-bottom border-success"><%= @prefecture.name %>(<%= @posts.count %>件の記事)</h1>
 
-
-
-      <% if @posts.exists? %>
-        <%= @posts.count %>件の投稿
-        <% @posts.each do |post| %>
-          <%= post.title %>
-          <%= post.body %>
+      <h5 class="mt-3">住んだことがある人(現在・過去含む) (<%= @residents.count %>人)</h5>
+      <% if @residents.exists? %>
+        <% @residents.each do |resident| %>
+          <%= attachment_image_tag resident, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "60x60" %>
         <% end %>
+      <% else %>
+        <p>まだいません</p>
+      <% end %>
+
+      <h5 class="mt-4">住んでみたい人 (<%= @wannalivings.count %>人)</h5>
+      <% if @wannalivings.exists? %>
+        <% @wannalivings.each do |wannaliving| %>
+          <%= attachment_image_tag wannaliving, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "60x60" %>
+        <% end %>
+      <% else %>
+        <p>まだいません</p>
+      <% end %>
+
+      <h3 class="mt-4 border-bottom border-danger">記事</h3>
+      <% if @posts.exists? %>
+
+          <div class="card-deck">
+            <% @posts.each do |post| %>
+            <div class="card", style="width: 18rem">
+              <img class="card-img-top" src="/assets/kagawa.jpeg", style="height: 180px">
+              <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <p class="card-text"><%= post.body %></p>
+                <a href="#" class="card-link">Show Detail</a>
+              </div>
+            </div>
+            <% end %>
+          </div>
+
+
       <% else %>
         <p>まだ投稿はありません</p>
       <% end %>

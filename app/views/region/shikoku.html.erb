@@ -4,16 +4,32 @@
 
     <div class="col-9 mt-5 d-flex flex-wrap">
       <div class="mb-3 mr-2">
-        <!--link_toで写真と文字を囲う-->
-        <%= image_tag 'kagawa.jpeg', size: "190x190" %>
-        <p class="text-center">kagawa</p>
+        <%= link_to posts_path(prefecture_id: 36) do %>
+          <%= image_tag 'kagawa.jpeg', size: "190x190" %>
+          <p class="text-center">香川県</p>
+        <% end %>
       </div>
-      <div class="mb-3 mr-2"><%= image_tag 'tokushima.jpeg', size: "190x190" %></div>
-      <div class="mb-3 mr-2"><%= image_tag 'ehime.jpeg', size: "190x190" %></div>
-      <div class="mb-3 mr-2"><%= image_tag 'kouchi.jpeg', size: "190x190" %></div>
+      <div class="mb-3 mr-2">
+        <%= link_to posts_path(prefecture_id: 35) do %>
+          <%= image_tag 'tokushima.jpeg', size: "190x190" %>
+          <p class="text-center">徳島県</p>
+        <% end %>
+      </div>
+      <div class="mb-3 mr-2">
+        <%= link_to posts_path(prefecture_id: 37) do %>
+          <%= image_tag 'ehime.jpeg', size: "190x190" %>
+          <p class="text-center">愛媛県</p>
+        <% end %>
+      </div>
+      <div class="mb-3 mr-2">
+        <%= link_to posts_path(prefecture_id: 38) do %>
+          <%= image_tag 'kouchi.jpeg', size: "190x190" %>
+          <p class="text-center">高知県</p>
+        <% end %>
+      </div>
     </div>
 
-    <div class="col-3"><p>side</p></div>
+    <div class="col-3 mt-5"><p>side</p></div>
 
   </div>
 

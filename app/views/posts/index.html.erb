@@ -3,6 +3,11 @@
   <div class="row">
 
     <div class="col-9 mt-5">
+
+      <h1><%= @prefecture.name%></h1>
+
+
+
       <% if @posts.exists? %>
         <%= @posts.count %>件の投稿
         <% @posts.each do |post| %>
@@ -10,7 +15,7 @@
           <%= post.body %>
         <% end %>
       <% else %>
-        まだ投稿はありません
+        <p>まだ投稿はありません</p>
       <% end %>
     </div>
 

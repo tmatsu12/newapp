@@ -4,40 +4,55 @@
 
     <div class="col-9 mt-5">
 
-      <h1 class="border-bottom border-success"><%= @prefecture.name %>(<%= @posts.count %>件の記事)</h1>
+      <h1 class="border-bottom border-danger"><%= @prefecture.name %>(<%= @posts.count %>件の記事)</h1>
 
-      <h5 class="mt-3">住んだことがある人(現在・過去含む) (<%= @residents.count %>人)</h5>
+      <h5 class="mt-3 mb-3">住んだことがある人(現在・過去含む) (<%= @residents.count %>人)</h5>
       <% if @residents.exists? %>
-        <% @residents.each do |resident| %>
-          <%= attachment_image_tag resident, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "60x60" %>
-        <% end %>
+        <div class="d-flex flex-wrap">
+          <% @residents.each do |resident| %>
+            <div class="text-center mr-2">
+              <%= attachment_image_tag resident, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "50x50" %><br />
+              <p><%= resident.name %></p>
+            </div>
+          <% end %>
+        </div>
       <% else %>
         <p>まだいません</p>
       <% end %>
 
-      <h5 class="mt-4">住んでみたい人 (<%= @wannalivings.count %>人)</h5>
+      <h5 class="mt-2 mb-3">住んでみたい人 (<%= @wannalivings.count %>人)</h5>
       <% if @wannalivings.exists? %>
-        <% @wannalivings.each do |wannaliving| %>
-          <%= attachment_image_tag wannaliving, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "60x60" %>
-        <% end %>
+        <div class="d-flex flex-wrap">
+          <% @wannalivings.each do |wannaliving| %>
+            <div class="text-center mr-2">
+              <%= attachment_image_tag wannaliving, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "50x50" %><br>
+              <p><%= wannaliving.name %></p>
+            </div>
+          <% end %>
+        </div>
       <% else %>
         <p>まだいません</p>
       <% end %>
 
-      <h3 class="mt-4 border-bottom border-danger">記事</h3>
+      <h3 class="mt-4 border-bottom border-success">記事</h3>
       <% if @posts.exists? %>
 
-          <div class="card-columns">
-            <% @posts.each do |post| %>
-            <div class="card mr-3">
-              <img class="card-img-top" src="/assets/kagawa.jpeg", style="height: 180px">
-              <div class="card-body">
-                <h5 class="card-title"><%= post.title %></h5>
-                <p class="card-text"><%= post.body %></p>
-                <a href="#" class="card-link">Show Detail</a>
-              </div>
+          <div class="card-group">
+            <div class="row">
+              <% @posts.each do |post| %>
+                <div class="col-4 mb-3">
+                  <div class="card h-180">
+                    <img class="card-img-top" src="/assets/kagawa.jpeg", style="height: 180px">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= post.title %></h5>
+                      <p class="card-text"><%= post.body.truncate(20) %></p>
+                      <p class="card-text"><small class="text-muted"><%= attachment_image_tag post.user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "15x15" %><%= post.user.name %>さんによって<%= post.updated_at.strftime('%Y/%m/%d') %>に書かれました</small></p>
+                      <a href="#" class="card-link">詳細を見る</a>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <% end %>
           </div>
 
 
@@ -46,7 +61,9 @@
       <% end %>
     </div>
 
-    <div class="col-3 mt-5"><p>side</p></div>
+    <div class="col-3 mt-5">
+      <%= link_to "新規に投稿する", new_post_path(prefecture_id: @prefecture.id), class: "btn btn-primary btn-block" %>
+    </div>
 
   </div>
 

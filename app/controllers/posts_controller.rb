@@ -14,15 +14,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.prefecture_id = 36
     @post.user_id = 1
     @post.save
-    redirect_to posts_path(prefecture_id: 36)
+    redirect_to posts_path(prefecture_id: @post.prefecture_id)
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :prefecture_id)
   end
 end

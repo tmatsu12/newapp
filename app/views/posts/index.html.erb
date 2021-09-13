@@ -45,9 +45,9 @@
                     <img class="card-img-top" src="/assets/kagawa.jpeg", style="height: 180px">
                     <div class="card-body">
                       <h5 class="card-title"><%= post.title %></h5>
-                      <p class="card-text"><%= post.body.truncate(15) %></p>
+                      <p class="card-text"><%= post.body.truncate(20) %></p>
                       <p class="card-text"><small class="text-muted"><%= attachment_image_tag post.user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "15x15" %><%= post.user.name %>さんによって<%= post.updated_at.strftime('%Y/%m/%d') %>に書かれました</small></p>
-                      <a href="#" class="card-link">Show Detail</a>
+                      <a href="#" class="card-link">詳細を見る</a>
                     </div>
                   </div>
                 </div>

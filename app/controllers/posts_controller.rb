@@ -6,4 +6,8 @@ class PostsController < ApplicationController
     @residents = @prefecture.residents
     @wannalivings = @prefecture.wannalivings
   end
+
+  def new
+    @prefecture = Prefecture.find(params[:prefecture_id])
+  end
 end

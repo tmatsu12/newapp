@@ -61,7 +61,9 @@
       <% end %>
     </div>
 
-    <div class="col-3 mt-5"><p>side</p></div>
+    <div class="col-3 mt-5">
+      <%= link_to "新規に投稿する", new_post_path(prefecture_id: @prefecture.id), class: "btn btn-primary btn-block" %>
+    </div>
 
   </div>
 

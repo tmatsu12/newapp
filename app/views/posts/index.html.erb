@@ -37,18 +37,22 @@
       <h3 class="mt-4 border-bottom border-success">記事</h3>
       <% if @posts.exists? %>
 
-          <div class="card-columns">
-            <% @posts.each do |post| %>
-            <div class="card mr-3">
-              <img class="card-img-top" src="/assets/kagawa.jpeg", style="height: 180px">
-              <div class="card-body">
-                <h5 class="card-title"><%= post.title %></h5>
-                <p class="card-text"><%= post.body.truncate(15) %></p>
-                <p class="card-text"><small class="text-muted"><%= attachment_image_tag post.user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "15x15" %><%= post.user.name %>によって<%= post.updated_at.strftime('%Y/%m/%d') %>に書かれました</small></p>
-                <a href="#" class="card-link">Show Detail</a>
-              </div>
+          <div class="card-group">
+            <div class="row">
+              <% @posts.each do |post| %>
+                <div class="col-4 mb-3">
+                  <div class="card h-180">
+                    <img class="card-img-top" src="/assets/kagawa.jpeg", style="height: 180px">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= post.title %></h5>
+                      <p class="card-text"><%= post.body.truncate(15) %></p>
+                      <p class="card-text"><small class="text-muted"><%= attachment_image_tag post.user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "15x15" %><%= post.user.name %>さんによって<%= post.updated_at.strftime('%Y/%m/%d') %>に書かれました</small></p>
+                      <a href="#" class="card-link">Show Detail</a>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <% end %>
           </div>
 
 

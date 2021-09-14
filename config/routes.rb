@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   devise_for :users
   get '/region/:region' => 'homes#region', as: "region"
   resources :posts
+  resources :post_images, only: [:new, :create, :destroy]
 end

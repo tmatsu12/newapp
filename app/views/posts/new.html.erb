@@ -5,11 +5,15 @@
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group">
             <%= f.label :タイトル %><br />
-            <%= f.text_field :title, class: "col-12 form-control" %>
+            <%= f.text_field :title, class: "col-9 form-control border border-dark", placeholder: "なるべく市町村名を入れましょう（例：箕輪町に4年間住んでみました！）" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :画像 %><br />
+            <%= f.attachment_field :image %>
           </div>
           <div class="form-group">
             <%= f.label :内容 %><br />
-            <%= f.text_area :body, class: "col-12 form-control" %>
+            <%= f.text_area :body, rows: 6, class: "col-9 form-control border border-dark", placeholder: template %>
           </div>
           <%= f.hidden_field :prefecture_id, value:params[:prefecture_id] %>
           <div class="actions">

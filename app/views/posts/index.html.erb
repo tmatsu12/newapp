@@ -34,7 +34,7 @@
         <p>まだいません</p>
       <% end %>
 
-      <h3 class="mt-4 border-bottom border-success">記事</h3>
+      <h3 class="mt-5 border-bottom border-success">記事</h3>
       <% if @posts.exists? %>
 
           <div class="card-group">
@@ -42,7 +42,7 @@
               <% @posts.each do |post| %>
                 <div class="col-4 mb-3">
                   <div class="card h-180">
-                    <img class="card-img-top" src="/assets/kagawa.jpeg", style="height: 180px">
+                    <%= attachment_image_tag post, :image, class: "card-img-top", style: "height: 180px", fallback: "No_Picture.jpeg" %>
                     <div class="card-body">
                       <h5 class="card-title"><%= post.title %></h5>
                       <p class="card-text"><%= post.body.truncate(20) %></p>

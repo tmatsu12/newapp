@@ -76,6 +76,10 @@ gem 'font-awesome-sass', '~> 5.13'
 
 gem 'seed-fu'
 
+gem 'geocoder'
+
+gem 'dotenv-rails'
+
 
 
 

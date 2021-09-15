@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_013828) do
+ActiveRecord::Schema.define(version: 2021_09_15_105553) do
+
+  create_table "maps", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -24,6 +32,8 @@ ActiveRecord::Schema.define(version: 2021_09_15_013828) do
     t.text "body1"
     t.text "body2"
     t.text "body3"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

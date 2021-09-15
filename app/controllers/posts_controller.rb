@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @adress = @post.prefecture.name+@post.title
+    p @adress
   end
 
   def new

@@ -8,41 +8,44 @@
 }
 </style>
 
+<h3><%= @adress %></h3>
+
 <script>
-// let map
+let map
 
-// function initMap(){
-//   geocoder = new google.maps.Geocoder()
+function initMap(){
+  geocoder = new google.maps.Geocoder()
 
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: 40.7828, lng:-73.9653},
-//     zoom: 12,
-//   });
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.7828, lng:-73.9653},
+    zoom: 12,
+  });
 
-//   marker = new google.maps.Marker({
-//     position:  {lat: 40.7828, lng:-73.9653},
-//     map: map
+  marker = new google.maps.Marker({
+    position:  {lat: 40.7828, lng:-73.9653},
+    map: map
+  });
+}
+
+// let geocoder
+
+
+// function codeAddress(){
+//   // let inputAddress = document.getElementById('address').value;
+//   let inputAddress = @post.prefecture.name+@post.title;
+
+//   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+//     if (status == 'OK') {
+//       map.setCenter(results[0].geometry.location);
+//       var marker = new google.maps.Marker({
+//           map: map,
+//           position: results[0].geometry.location
+//       });
+//     } else {
+//       alert('該当する結果がありませんでした：' + status);
+//     }
 //   });
 // }
-
-let geocoder
-
-function codeAddress(){
-  // let inputAddress = document.getElementById('address').value;
-  let inputAddress = document.getElementById('address').value;
-
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-    } else {
-      alert('該当する結果がありませんでした：' + status);
-    }
-  });   
-}
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW84-hKuKYu2wWHnHkA-aVsec1ZTefzFY&callback=initMap" async defer></script>

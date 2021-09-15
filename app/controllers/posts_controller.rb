@@ -7,6 +7,13 @@ class PostsController < ApplicationController
     @wannalivings = @prefecture.wannalivings
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @address = @post.prefecture.name+@post.title
+    results = Geocoder.search(@address)
+    @latlng = results.first.coordinates
+  end
+
   def new
     @prefecture = Prefecture.find(params[:prefecture_id])
     @post = Post.new
@@ -22,6 +29,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :prefecture_id, :image)
+    params.require(:post).permit(:title, :body, :prefecture_id, :image, :evaluation, :body1, :body2, :body3)
   end
 end

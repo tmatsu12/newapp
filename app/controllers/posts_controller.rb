@@ -10,11 +10,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @address = @post.prefecture.name+@post.title
-    p @address
     results = Geocoder.search(@address)
-    p results
     @latlng = results.first.coordinates
-    p @latlng
   end
 
   def new

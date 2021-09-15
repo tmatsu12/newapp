@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     @wannalivings = @prefecture.wannalivings
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @prefecture = Prefecture.find(params[:prefecture_id])
     @post = Post.new

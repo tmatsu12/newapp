@@ -4,7 +4,7 @@
 
     <div class="col-9 mt-5">
 
-      <h1 class="border-bottom border-danger"><%= @prefecture.name %>(<%= @posts.count %>件の記事)</h1>
+      <h1 class="border-bottom border-danger"><%= @prefecture.name %>(<%= @posts.count %>件の投稿)</h1>
 
       <h5 class="mt-3 mb-3">住んでいる人、住んだことがある人(<%= @residents.count %>人)</h5>
       <% if @residents.exists? %>
@@ -34,7 +34,7 @@
         <p>まだいません</p>
       <% end %>
 
-      <h3 class="mt-5 border-bottom border-success">記事</h3>
+      <h3 class="mt-5 border-bottom border-success">投稿</h3>
       <% if @posts.exists? %>
 
           <div class="card-group">
@@ -58,6 +58,7 @@
                       });
                       </script>
                       <p class="card-text mt-3"><%= post.body.truncate(20) %></p>
+                      <%= link_to "この投稿を読む", post_path(post), class: "btn btn-primary" %>
                     </div>
                     <div class="card-footer">
                       <small class="text-muted"><%= attachment_image_tag post.user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "15x15" %><%= post.user.name %>さんによって<%= post.updated_at.strftime('%Y/%m/%d') %>に書かれました</small>

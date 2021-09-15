@@ -4,8 +4,8 @@
       <div class="form-group">
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group">
-            <%= f.label :タイトル %><br />
-            <%= f.text_field :title, class: "col-9 form-control border border-dark", placeholder: "なるべく市町村名を入れましょう（例：箕輪町に4年間住んでみました！）" %>
+            <%= f.label :どこに住んでますか？、又は住んでましたか？ %><br />
+            <%= f.text_field :title, class: "col-9 form-control border border-dark", placeholder: "市町村名" %>
           </div>
           <div class="form-group">
             <%= f.label :画像 %><br />
@@ -13,8 +13,7 @@
           </div>
 
           <div class="form-group" id="star">
-            <!--<%= f.label :evaluation,'評価' %>-->
-            <%= f.label :評価 %><br/>
+            <%= f.label :満足度 %><br/>
             <%= f.hidden_field :evaluation, id: :review_star %>
           </div>
 

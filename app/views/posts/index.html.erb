@@ -37,11 +37,11 @@
       <h3 class="mt-5 border-bottom border-success">投稿</h3>
       <% if @posts.exists? %>
 
-          <div class="card-group">
-            <div class="row">
+          <!--<div class="card-group">-->
+            <div class="row row-cols-3">
               <% @posts.each do |post| %>
                 <div class="col-4 mb-3" >
-                  <div class="card" style="min-width: 16rem" >
+                  <div class="card" style="width: 16rem" >
                     <%= attachment_image_tag post, :image, class: "card-img-top", style: "width: 100%", fallback: "No_Picture.png" %>
                     <div class="card-body">
                       <h5 class="card-title"><%= post.title %></h5>
@@ -68,7 +68,7 @@
                 </div>
               <% end %>
             </div>
-          </div>
+          <!--</div>-->
 
 
       <% else %>

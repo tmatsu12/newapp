@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_105553) do
+ActiveRecord::Schema.define(version: 2021_09_16_004851) do
 
   create_table "maps", force: :cascade do |t|
     t.string "address"
@@ -32,8 +32,7 @@ ActiveRecord::Schema.define(version: 2021_09_15_105553) do
     t.text "body1"
     t.text "body2"
     t.text "body3"
-    t.float "latitude"
-    t.float "longitude"
+    t.string "city"
     t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

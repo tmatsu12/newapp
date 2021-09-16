@@ -48,17 +48,61 @@
           });
           </script>
 
-          <h3 class="mt-4">【生活面について】</h3>
-          <p class="my-4"><%= @post.body %></p>
+          <table class="table mt-4 table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>【生活面について】</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @post.body %></td>
+              </tr>
+            </tbody>
+          </table>
 
-          <h3 class="mt-4">【仕事面について】</h3>
-          <p class="my-4"><%= @post.body1 %></p>
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>【仕事面について】</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @post.body1 %></td>
+              </tr>
+            </tbody>
+          </table>
 
-          <h3 class="mt-4">【人間関係面について】</h3>
-          <p class="my-4"><%= @post.body2 %></p>
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>【人間関係面について】</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @post.body2 %></td>
+              </tr>
+            </tbody>
+          </table>
 
-          <h3 class="mt-4">【その他】</h3>
-          <p class="my-4"><%= @post.body3 %></p>
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>【その他】</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @post.body3 %></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <%= link_to "#{@post.prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @post.prefecture_id), class: "btn btn-success" %>
+
+
 
               <div class="col-3 mt-5">
               </div>

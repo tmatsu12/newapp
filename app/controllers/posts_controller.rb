@@ -28,7 +28,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = 1
     @post.save
-    redirect_to posts_path(prefecture_id: @post.prefecture_id)
+    # redirect_to posts_path(prefecture_id: @post.prefecture_id)
+    redirect_to post_path(@post)
   end
 
   private

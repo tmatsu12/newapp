@@ -20,8 +20,13 @@ class PostsController < ApplicationController
   end
 
   def new
-    @prefecture = Prefecture.find(params[:prefecture_id])
-    @post = Post.new
+    if user_signed_in?
+      @prefecture = Prefecture.find(params[:prefecture_id])
+      @post = Post.new
+    else
+      flash[:notice]="新規登録して下さい（簡単ログインが便利です！）"
+      redirect_to new_user_registration_path
+    end
   end
 
   def create

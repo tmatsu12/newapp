@@ -3,42 +3,42 @@
     <div class="col-9 mt-5">
       <p id="notice"><%= flash[:notice] %></p>
 
+        <h1 class="border-bottom border-danger"><%= @post.title %></h1>
+
+          <div id='map'></div>
+
+          <style>
+          #map {
+            height: 600px;
+            width: 600px;
+          }
+          </style>
+
+          <%= @latlng %>
+
+          <script>
+          let map
+
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>},
+              zoom: 10,
+            });
+
+            marker = new google.maps.Marker({
+              position:  {lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>},
+              map: map
+            });
+          }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap"async defer></script>
+
+              <div class="col-3 mt-5">
+              </div>
 
 
-<div id='map'></div>
-
-<style>
-#map {
-  height: 600px;
-  width: 600px;
-}
-</style>
-
-<%= @latlng %>
-
-<script>
-let map
-
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>},
-    zoom: 10,
-  });
-
-  marker = new google.maps.Marker({
-    position:  {lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>},
-    map: map
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap"async defer></script>
-
-    <div class="col-3 mt-5">
     </div>
-
-
-</div>
-</div>
+  </div>
 </div>

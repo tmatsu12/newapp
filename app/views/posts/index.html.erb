@@ -41,8 +41,8 @@
             <div class="row">
               <% @posts.each do |post| %>
                 <div class="col-4 mb-3" >
-                  <div class="card" >
-                    <%= attachment_image_tag post, :image, class: "card-img-top", style: "width: 100%", fallback: "No_Picture.jpeg" %>
+                  <div class="card" style="min-width: 16rem" >
+                    <%= attachment_image_tag post, :image, class: "card-img-top", style: "width: 100%", fallback: "No_Picture.png" %>
                     <div class="card-body">
                       <h5 class="card-title"><%= post.city %></h5>
                       <div id="star-rate-<%= post.id %>">満足度：</div>

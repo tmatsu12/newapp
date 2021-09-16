@@ -15,6 +15,7 @@ class PostsController < ApplicationController
       @latlng = results.first.coordinates
     rescue
       @latlng = [-34.397, 150.644]
+      flash[:notice] = "市町村名を間違っていませんか？"
     end
   end
 

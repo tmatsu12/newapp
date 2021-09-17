@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   def index
+    @user = current_user
     @prefecture = Prefecture.find(params[:prefecture_id])
     @posts = @prefecture.posts.all.order(updated_at: :desc)
     @residents = @prefecture.residents
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = 1
+    @post.user_id = current_user.id
     @post.save
     # redirect_to posts_path(prefecture_id: @post.prefecture_id)
     redirect_to post_path(@post)

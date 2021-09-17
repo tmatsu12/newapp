@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
     @address = @post.prefecture.name+@post.city
     begin
       results = Geocoder.search(@address)
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
     if user_signed_in?
       @prefecture = Prefecture.find(params[:prefecture_id])
       @post = Post.new
+      @user = current_user
     else
       flash[:notice]="新規登録して下さい（簡単ログインが便利です！）"
       redirect_to new_user_registration_path
@@ -40,6 +42,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @user = @post.user
   end
 
   def update

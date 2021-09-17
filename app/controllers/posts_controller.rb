@@ -37,6 +37,23 @@ class PostsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to post_path(@post)
+    flash[:notice] = "投稿を更新しました"
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path(prefecture_id: @post.prefecture_id)
+  end
+
   private
 
   def post_params

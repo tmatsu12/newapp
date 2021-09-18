@@ -12,6 +12,7 @@
       <p>住んでいる（いた）県：<%= @user.prefecture2.name %></p>
       <p>住んでみたい県：<%= @user.prefecture1.name %></p>
       
+      <%= link_to "ユーザーを編集する", edit_user_path(@user), class: "btn btn-primary w-25" %>
 
       <% if @posts %>
         <table class="table table-striped table-hover mt-4">

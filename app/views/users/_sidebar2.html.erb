@@ -1,14 +1,5 @@
-<h2 class="mb-3">ユーザー情報</h2>
-<% if user_signed_in? %>
-  <%= attachment_image_tag user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "150x150" %>
-  <p class="mt-2">名前：<%= user.name %></p>
-  <p>住んでいる（いた）県：<%= user.prefecture2.name %></p>
-  <p>住んでみたい県：<%= user.prefecture1.name %></p>
-<% else %>
-  <p>まだログインしていません</p>
-<% end %>
 
-<!--sidebar1との違い・・・regionページには新規投稿ボタンをつけなかった-->
+
 
 <table class="table table-striped table-hover mt-4">
   <thead>
@@ -18,7 +9,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= link_to "北海道地方", "" %></td>
+      <td><%= link_to "北海道", "" %></td>
     </tr>
     <tr>
       <td><%= link_to "東北地方", "" %></td>

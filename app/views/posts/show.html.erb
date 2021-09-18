@@ -106,7 +106,7 @@
           <br>
           <% if @post.user == current_user %>
           <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary mt-3" %>
-          <%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger mt-3" %>
+          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger mt-3" %>
           <% end %>
 
 

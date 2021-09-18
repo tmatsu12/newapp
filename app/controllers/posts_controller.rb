@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @prefecture = @post.prefecture
     @user = @post.user
     @address = @post.prefecture.name+@post.city
     begin
@@ -42,6 +43,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @prefecture = @post.prefecture
     @user = @post.user
   end
 

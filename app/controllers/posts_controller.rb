@@ -36,9 +36,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    # redirect_to posts_path(prefecture_id: @post.prefecture_id)
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      p @post.prefecture_id
+      p @post.prefecture
+      @user = current_user
+      render :new
+    end
   end
 
   def edit

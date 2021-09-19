@@ -6,10 +6,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :city, presence: true
-  validates :body, presence: true
-  validates :body1, presence: true
-  validates :body2, presence: true
-  validates :body3, presence: true
+
 
   validates :title, length: { maximum: 25 }
   validates :city, length: { maximum: 20 }

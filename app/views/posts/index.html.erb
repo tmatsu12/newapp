@@ -59,10 +59,10 @@
                       </script>
                       <p class="card-text mt-3">地域：<%= post.city %></p>
                       <p class="card-text mt-2"><%= post.body.truncate(20) %></p>
-                      <%= link_to "この投稿を読む", post_path(post), class: "btn btn-primary" %>
+                      <%= link_to "この投稿を読む", post_path(post), class: "btn btn-primary rounded-pill" %>
                     </div>
                     <div class="card-footer">
-                      <small class="text-muted"><%= attachment_image_tag post.user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "15x15" %><%= post.user.name %>さんによって<%= post.updated_at.strftime('%Y/%m/%d') %>に書かれました</small>
+                      <small class="text-muted"><%= attachment_image_tag post.user, :profile_image, class:"rounded-lg", fallback: "no_image.png", size: "30x30" %><%= post.user.name %>さんによって<%= post.updated_at.strftime('%Y/%m/%d') %>に書かれました</small>
                     </div>
                   </div>
                 </div>

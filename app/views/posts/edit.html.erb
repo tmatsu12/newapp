@@ -44,11 +44,11 @@
           <%= f.hidden_field :prefecture_id, value: @post.prefecture_id %>
 
           <div class="actions">
-            <%= f.submit '更新',class: "btn btn-success" %>
+            <%= f.submit '更新',class: "btn btn-success rounded-pill" %>
           </div>
         <% end %>
 
-        <%= link_to "#{@post.prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @post.prefecture_id), class: "btn btn-success mt-3" %>
+        <%= link_to "#{@post.prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @post.prefecture_id), class: "btn btn-success mt-3 rounded-pill" %>
 
 
     </div>

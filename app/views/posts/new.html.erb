@@ -50,13 +50,13 @@
           </div>
         <% end %>
 
-        <%= link_to "#{@post.prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @post.prefecture_id), class: "btn btn-success mt-3" %>
+        <%= link_to "#{@prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @prefecture.id), class: "btn btn-success mt-3" %>
 
 
     </div>
 
     <div class="col-3 mt-5">
-      <%= render "users/sidebar1", user:@user %>
+      <%= render partial: "users/sidebar1", locals: {user:@user, prefecture:@prefecture} %>
     </div>
 
 

@@ -35,6 +35,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @prefecture = @post.prefecture
     @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post)
@@ -52,6 +53,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @prefecture = @post.prefecture
     if @post.update(post_params)
       redirect_to post_path(@post)
       flash[:notice] = "投稿を更新しました"

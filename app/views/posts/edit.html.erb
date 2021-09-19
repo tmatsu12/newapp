@@ -55,7 +55,7 @@
 
     </div>
     <div class="col-3 mt-5">
-      <%= render "users/sidebar1", user:@user %>
+      <%= render partial: "users/sidebar1", locals: {user:@user, prefecture:@prefecture} %>
     </div>
 
 

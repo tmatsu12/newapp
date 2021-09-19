@@ -3,4 +3,6 @@ class Post < ApplicationRecord
   belongs_to :user
   attachment :image
   geocoded_by :address
+  
+  
 end

@@ -5,7 +5,7 @@
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group">
             <%= f.label :タイトル %><br />
-            <%= f.text_field :title, class: "col-9 form-control" %>
+            <%= f.text_field :title, class: "col-9 form-control", placeholder: "(例):〇〇に〇〇年間住んでいました！" %>
           </div>
           <div class="form-group">
             <%= f.label :どこに住んでますか？、又は住んでましたか？ %><br />

@@ -2,10 +2,12 @@
   <div class="row">
     <div class="col-9 mt-5">
 
+      <%= render "posts/errors", obj:@post %>
+
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group">
             <%= f.label :タイトル %><br />
-            <%= f.text_field :title, class: "col-9 form-control" %>
+            <%= f.text_field :title, class: "col-9 form-control", placeholder: "(例):〇〇に〇〇年間住んでいました！" %>
           </div>
           <div class="form-group">
             <%= f.label :どこに住んでますか？、又は住んでましたか？ %><br />
@@ -48,13 +50,13 @@
           </div>
         <% end %>
 
-        <%= link_to "#{@prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: params[:prefecture_id]), class: "btn btn-success mt-3" %>
+        <%= link_to "#{@prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @prefecture.id), class: "btn btn-success mt-3" %>
 
 
     </div>
 
     <div class="col-3 mt-5">
-      <%= render "users/sidebar1", user:@user %>
+      <%= render partial: "users/sidebar1", locals: {user:@user, prefecture:@prefecture} %>
     </div>
 
 

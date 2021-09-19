@@ -35,10 +35,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @prefecture = @post.prefecture
     @post.user_id = current_user.id
-    @post.save
-    # redirect_to posts_path(prefecture_id: @post.prefecture_id)
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      @user = current_user
+      render :new
+    end
   end
 
   def edit
@@ -49,9 +53,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post)
-    flash[:notice] = "投稿を更新しました"
+    @prefecture = @post.prefecture
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+      flash[:notice] = "投稿を更新しました"
+    else
+      @user = @post.user
+      render :edit
+    end
   end
 
   def destroy

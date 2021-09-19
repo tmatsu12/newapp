@@ -5,11 +5,11 @@
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group">
             <%= f.label :タイトル %><br />
-            <%= f.text_field :title, class: "col-9 form-control border border-dark" %>
+            <%= f.text_field :title, class: "col-9 form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :どこに住んでますか？、又は住んでましたか？ %><br />
-            <%= f.text_field :city, class: "col-9 form-control border border-dark", placeholder: "市町村名" %>
+            <%= f.text_field :city, class: "col-9 form-control", placeholder: "市町村名" %>
           </div>
           <div class="form-group">
             <%= f.label :画像 %><br />
@@ -23,22 +23,22 @@
 
           <div class="form-group">
             <%= f.label :【生活面について】 %><br />
-            <%= f.text_area :body, rows: 4, class: "col-9 form-control border border-dark", placeholder: "食事、家賃、レジャー、土地柄など" %>
+            <%= f.text_area :body, rows: 4, class: "col-9 form-control", placeholder: "食事、家賃、レジャー、土地柄など" %>
           </div>
 
           <div class="form-group">
             <%= f.label :【仕事面について】 %><br />
-            <%= f.text_area :body1, rows: 4, class: "col-9 form-control border border-dark", placeholder: "仕事の見つけやすさ、盛んな業種など" %>
+            <%= f.text_area :body1, rows: 4, class: "col-9 form-control", placeholder: "仕事の見つけやすさ、盛んな業種など" %>
           </div>
 
           <div class="form-group">
             <%= f.label :【人間関係面について】 %><br />
-            <%= f.text_area :body2, rows: 4, class: "col-9 form-control border border-dark", placeholder: "地域づきあいの濃密さなど" %>
+            <%= f.text_area :body2, rows: 4, class: "col-9 form-control", placeholder: "地域づきあいの濃密さなど" %>
           </div>
 
           <div class="form-group">
             <%= f.label :【その他】 %><br />
-            <%= f.text_area :body3, rows: 4, class: "col-9 form-control border border-dark", placeholder: "自由に書きましょう！" %>
+            <%= f.text_area :body3, rows: 4, class: "col-9 form-control", placeholder: "自由に書きましょう！" %>
           </div>
 
           <%= f.hidden_field :prefecture_id, value:params[:prefecture_id] %>

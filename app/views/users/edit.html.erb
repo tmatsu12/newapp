@@ -7,15 +7,29 @@
       <h1 class="border-bottom border-danger">ユーザー情報の編集</h1>
 
       <%= form_with model:@user, local:true do |f| %>
-        <div class="form-group">
-          <%= f.label :名前 %><br>
-          <%= f.text_field :name, class: "form-control col-5" %>
-        </div>
+        <% if @user.name == "ゲスト" %>
+          <div class="form-group">
+            <%= f.label :名前 %><br>
+            <%= f.text_field :name, class: "form-control col-5", readonly: true %>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <%= f.label :名前 %><br>
+            <%= f.text_field :name, class: "form-control col-5" %>
+          </div>
+        <% end %>
 
-        <div class="form-group">
-          <%= f.label :プロフィール画像 %><br>
-          <%= f.attachment_field :profile_image %>
-        </div>
+        <% if @user.name == "ゲスト" %>
+          <div class="form-group">
+            <%= f.label :プロフィール画像 %><br>
+            <%= f.attachment_field :profile_image, disabled: true %>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <%= f.label :プロフィール画像 %><br>
+            <%= f.attachment_field :profile_image %>
+          </div>
+        <% end %>
 
         <div class="form-group">
           <%= f.label :住んでいる（いた）県 %><br>

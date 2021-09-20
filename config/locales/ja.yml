@@ -12,4 +12,7 @@ ja:
       post:
         title: タイトル
         city: 居住地域
+    attributes:
+      post_comment:
+        comment: コメント
 

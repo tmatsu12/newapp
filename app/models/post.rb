@@ -7,6 +7,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :city, presence: true
+  validates :evaluation, presence: true
 
 
   validates :title, length: { maximum: 25 }

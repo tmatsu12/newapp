@@ -109,12 +109,16 @@
           <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger mt-3 rounded-pill" %>
           <% end %>
 
-          <table class="post_comments">
+          <div class="post_<%= @post.id %>">
+            <%= render "post_comments/count", post: @post %>
+          </div>
+
+          <table class="table table-striped post_comments mt-3">
             <%= render "post_comments/index", post: @post %>
           </table>
           <%= form_with model:[@post, @post_comment] do |f| %>
             <div class="form-group">
-              <%= f.text_area :comment, rows: 4, class: "col-9 form-control", placeholder: "コメントをここに" %>
+              <%= f.text_area :comment, rows: 4, class: "col-9 form-control mt-3", placeholder: "コメントをここに" %>
             </div>
 
             <div class="actions">

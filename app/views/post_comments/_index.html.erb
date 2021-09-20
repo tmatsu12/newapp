@@ -1,18 +1,16 @@
-<% if post.post_comments.exists? %>
+<tbody>
   <% post.post_comments.each do |post_comment| %>
     <tr>
     	<td>
     		<%= link_to user_path(post_comment.user) do %>
-      		<%= attachment_image_tag post_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.png", size: "50x50" %><br>
+      		<%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.png", size: "35x35" %><br>
       		<%= post_comment.user.name %>
     		<% end %>
     	</td>
     	<td><%= post_comment.comment %></td>
     	<% if current_user == post_comment.user %>
-      	<td><%= link_to 'Destroy', post_post_comment_path(post_comment.post_id, post_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+      	<td><%= link_to 'Destroy', post_post_comment_path(post_comment.post_id, post_comment.id), class: 'btn btn-danger', method: :delete, remote: true %></td>
     	<% end %>
     </tr>
   <% end %>
-<% else %>
-  <p>まだコメントはありません</p>
-<% end %>
+</tbody>

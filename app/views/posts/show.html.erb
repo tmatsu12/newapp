@@ -109,6 +109,10 @@
           <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger mt-3 rounded-pill" %>
           <% end %>
 
+          <div class="comment_error">
+            <%= render 'posts/errors', obj: @post_comment %>
+          </div>
+
           <div class="post_<%= @post.id %>">
             <%= render "post_comments/count", post: @post %>
           </div>

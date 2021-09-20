@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
   devise_for :users
   get '/region/:region' => 'homes#region', as: "region"
-  resources :posts
+  resources :posts do
+    resources :post_comments, only: [:create, :destroy]
+  end
   resources :post_images, only: [:new, :create, :destroy]
   resources :users, only: [:show, :edit, :update]
 end

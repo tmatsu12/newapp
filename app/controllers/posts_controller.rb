@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       results = Geocoder.search(@address)
       @latlng = results.first.coordinates
     rescue
-      @latlng = [40.7828, -73.9653]
+      @latlng = [40.7828, -73.9653] #NewYork
       flash[:notice] = "市町村名を間違っていませんか？"
     end
   end

@@ -120,6 +120,9 @@
           <table class="table table-striped post_comments mt-3">
             <%= render "post_comments/index", post: @post %>
           </table>
+
+
+
           <%= form_with model:[@post, @post_comment] do |f| %>
             <div class="form-group">
               <%= f.text_area :comment, rows: 4, class: "col-9 form-control mt-3", placeholder: "コメントをここに" %>

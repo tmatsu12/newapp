@@ -12,4 +12,8 @@ class Post < ApplicationRecord
 
   validates :title, length: { maximum: 25 }
   validates :city, length: { maximum: 20 }
+  validates :body, length: { maximum: 1000 }
+  validates :body1, length: { maximum: 1000 }
+  validates :body2, length: { maximum: 1000 }
+  validates :body3, length: { maximum: 1000 }
 end

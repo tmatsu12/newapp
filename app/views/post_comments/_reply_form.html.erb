@@ -2,10 +2,10 @@
     <%= form_with(model: [@post, @post_comment]) do |f| %>
       <%= f.hidden_field :parent_id %>
       <div class="form-group">
-        <%= f.label 'Reply' %>
+        <%= f.label '返信' %>
         <%= f.text_area :comment, class: 'form-control' %>
       </div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', post_path(@post), class: 'btn btn-secondary' %>
+      <%= f.submit '送信', class: 'btn btn-primary' %>
+      <%= link_to 'キャンセル', post_path(@post), class: 'btn btn-secondary' %>
     <% end %>
 </div>

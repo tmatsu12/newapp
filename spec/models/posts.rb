@@ -6,5 +6,6 @@ FactoryBot.define do
     body2 { Faker::Lorem.characters(number: 20) }
     body3 { Faker:Lorem.characters(number: 20) }
     association :user
+    association :prefecture
   end
 end

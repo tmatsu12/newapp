@@ -5,8 +5,8 @@ FactoryBot.define do
     body1 { Faker::Lorem.characters(number: 20) }
     body2 { Faker::Lorem.characters(number: 20) }
     body3 { Faker::Lorem.characters(number: 20) }
-    prefecture_id { Faker::Number.within(range: 35..38) }
     city { Faker::Address.city }
+    prefecture_id { Faker::Number.within(range: 35..38) }
     evaluation { Faker::Number.within(range: 1..5) }
     association :user
     association :prefecture

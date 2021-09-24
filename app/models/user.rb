@@ -22,5 +22,5 @@ class User < ApplicationRecord
   validates :prefecture1_id, presence: true
   validates :prefecture2_id, presence: true
 
-  validates :name, length: { maximum: 10 }
+  validates :name, length: { maximum: 20 }
 end

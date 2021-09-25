@@ -1,8 +1,5 @@
 ja:
   activerecord:
-    models:
-      user:
-      post:
     attributes:
       user:
         name: 名前
@@ -16,4 +13,3 @@ ja:
     attributes:
       post_comment:
         comment: コメント
-

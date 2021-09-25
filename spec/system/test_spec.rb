@@ -15,7 +15,7 @@ describe 'ユーザーログイン前のテスト' do
 end
 
 describe 'ユーザー新規登録のテスト' do
-  let(:user) { create(:user) }
+  let(:user) { build(:user) }
 
   before do
     visit new_user_registration_path
@@ -27,8 +27,11 @@ describe 'ユーザー新規登録のテスト' do
 
   context '新規登録成功のテスト' do
     it '正しく新規登録される' do
+      binding.pry
       expect { click_button "新規登録" }.to change{ User.count }.by(1)
-      # expect(page).to have_button "新規登録"
+      # # expect(page).to have_button "新規登録"
+      # click_button "新規登録"
+      # expect(current_path).to eq '/'
     end
   end
 

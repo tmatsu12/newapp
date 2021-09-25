@@ -9,7 +9,7 @@ FactoryBot.define do
     # prefecture_id { Faker::Number.within(range: 35..38) }
     prefecture_id { 36 }
     evaluation { Faker::Number.within(range: 1..5) }
-    association :user
-    association :prefecture
+    # association :user
+    # association :prefecture
   end
 end

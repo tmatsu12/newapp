@@ -33,7 +33,7 @@ describe 'エラー①：ユーザー新規登録のテスト' do
 
 end
 
-describe 'エラー②：フレンドリーフォワーディングの確認（新規登録後やログイン後の画面遷移先のテスト）' do
+describe 'エラー②：フレンドリーフォワーディングの確認（新規登録・ログイン後の画面遷移先のテスト）' do
   let!(:prefecture) { create(:prefecture) } #!がないとindex pageのidとnew pageのURLのidが一致しない？(prefecture.id = within(35..38)とした時) → そんなことはなかった
 
   before do
@@ -88,4 +88,6 @@ describe 'エラー②：フレンドリーフォワーディングの確認（�
   end
 
 end
+
+
 

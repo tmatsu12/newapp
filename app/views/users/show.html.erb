@@ -12,13 +12,13 @@
       <% if @user.prefecture2 %>
         <p>住んでいる（いた）県：<%= @user.prefecture2.name %></p>
       <% else %>
-        <p>住んでいる（いた）県：まだ入力してません</p>
+        <p>住んでいる（いた）県：未入力</p>
       <% end %>
 
       <% if @user.prefecture1 %>
         <p>住んでみたい県：<%= @user.prefecture1.name %></p>
       <% else %>
-        <p>住んでみたい県：まだ入力してません</p>
+        <p>住んでみたい県：未入力</p>
       <% end %>
 
       <%= link_to "ユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary w-25 rounded-pill" %>

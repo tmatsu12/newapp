@@ -89,5 +89,35 @@ describe 'エラー②：フレンドリーフォワーディングの確認（�
 
 end
 
+describe 'エラー③：１回エラーになってからもう一度新規投稿するテスト' do
+  let!(:prefecture) { create(:prefecture) }
+  let!(:user) { create(:user) }
+  let(:post) { build(:post, user_id: user.id) }
+
+
+  before do
+    visit new_user_session_path #投稿前にログインが必要
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
+    click_button "ログイン"
+  end
+
+
+  it '空白で投稿してエラーを発生させた後、必須事項を入力して投稿すると投稿できる' do
+    # visit '/posts/new?prefecture_id=' + prefecture.id.to_s
+    visit '/posts?prefecture_id=' + prefecture.id.to_s
+    click_link '新規に投稿する'
+    click_button '投稿'
+    fill_in 'post[title]', with: post.title
+    fill_in 'post[city]', with: post.city
+    # # fill_in 'post[evaluation]', with: post.evaluation
+    click_button '投稿'
+    # expect(current_path).to eq '/posts' + post.id.to_s
+    expect(page).to have_content 'どのあたり'
+  end
+
+
+end
+
 
 

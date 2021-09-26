@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-describe 'ユーザーログイン前のテスト' do
-  describe 'トップ画面のテスト' do
-    before do
-      visit root_path
-    end
+# describe 'ユーザーログイン前のテスト' do
+#   describe 'トップ画面のテスト' do
+#     before do
+#       visit root_path
+#     end
 
-    context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/'
-      end
-    end
-  end
-end
+#     context '表示内容の確認' do
+#       it 'URLが正しい' do
+#         expect(current_path).to eq '/'
+#       end
+#     end
+#   end
+# end
 
-describe 'ユーザー新規登録のテスト' do
-  let(:user) { create(:user) }
+describe 'エラー①：ユーザー新規登録のテスト' do
+  let(:user) { build(:user) }
 
   before do
     visit new_user_registration_path
@@ -26,30 +26,65 @@ describe 'ユーザー新規登録のテスト' do
   end
 
   context '新規登録成功のテスト' do
-    it '正しく新規登録される' do
+    it '外部キー入力を求められることなく正しく新規登録される' do
       expect { click_button "新規登録" }.to change{ User.count }.by(1)
-      # expect(page).to have_button "新規登録"
     end
   end
 
 end
 
-describe '新規投稿時の画面遷移のテスト' do
-  let(:user) { create(:user) }
-  let!(:prefecture) { create(:prefecture) } #!がないとindex pageのidとnew pageのURLのidが一致しない？
+describe 'エラー②：新規登録後やログイン後の画面遷移先のテスト' do
+  let!(:prefecture) { create(:prefecture) } #!がないとindex pageのidとnew pageのURLのidが一致しない？(prefecture.id = within(35..38)とした時) → そんなことはなかった
 
   before do
-    visit posts_path(prefecture_id: prefecture.id)
-    click_button "新規に投稿する"
-    fill_in 'user[name]', with: user.name
-    fill_in 'user[email]', with: user.email
-    fill_in 'user[password]', with: user.password
-    fill_in 'user[password_confirmation]', with: user.password_confirmation
-    click_button "新規登録"
+    visit '/posts?prefecture_id=' + prefecture.id.to_s
+    click_link "新規に投稿する"
   end
 
-  it '新規登録後に新規投稿画面に遷移する' do
-    expect(current_path).to eq '/posts/' + 'new?prefecture_id=' + prefecture.id.to_s
+  context '新規投稿を押下後に新規登録した場合' do
+    let(:user) { build(:user) }
+
+    before do
+      fill_in 'user[name]', with: user.name
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      fill_in 'user[password_confirmation]', with: user.password_confirmation
+      click_button "新規登録"
+    end
+
+    it '新規登録後に新規投稿画面に遷移する' do
+      expect(current_path).to eq '/posts/new?prefecture_id=' + prefecture.id.to_s
+      # expect(current_path).to eq "/"
+    end
+  end
+
+  context '新規投稿を押下後に簡単ログインした場合' do
+    let(:user) { create(:user) }
+
+    before do
+      click_link "簡単ログイン"
+    end
+
+    it '簡単ログイン後に新規投稿画面に遷移する' do
+      expect(current_path).to eq '/posts/new?prefecture_id=' + prefecture.id.to_s
+    end
+
+  end
+
+  context '新規投稿を押下後にログインした場合' do
+    let!(:user) { create(:user) }
+
+    before do
+      click_link "ログイン"
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button "ログイン"
+    end
+
+    it 'ログイン後に新規投稿画面に遷移する' do
+      expect(current_path).to eq '/posts/new?prefecture_id=' + prefecture.id.to_s
+    end
+
   end
 
 end

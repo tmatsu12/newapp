@@ -27,22 +27,20 @@ describe 'ユーザー新規登録のテスト' do
 
   context '新規登録成功のテスト' do
     it '正しく新規登録される' do
-      binding.pry
       expect { click_button "新規登録" }.to change{ User.count }.by(1)
-      # # expect(page).to have_button "新規登録"
-      # click_button "新規登録"
-      # expect(current_path).to eq '/'
     end
   end
 
 end
 
 describe '新規投稿時の画面遷移のテスト' do
-  let(:user) { create(:user) }
+  let(:user) { build(:user) }
   let!(:prefecture) { create(:prefecture) } #!がないとindex pageのidとnew pageのURLのidが一致しない？
 
   before do
-    visit posts_path(prefecture_id: prefecture.id)
+    # visit posts_path(prefecture_id: prefecture.id)
+    visit '/posts?prefecture_id=#{prefecture.id}'
+    binding.pry
     click_button "新規に投稿する"
     fill_in 'user[name]', with: user.name
     fill_in 'user[email]', with: user.email

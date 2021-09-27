@@ -43,6 +43,7 @@
             <%= f.text_area :body3, rows: 4, class: "col-9 form-control", placeholder: "自由に書きましょう！" %>
           </div>
 
+          <!--params[:prefecture_id]だとエラー後に消えてしまい困ったのでsessionを使っている-->
           <%= f.hidden_field :prefecture_id, value:session[:prefecture] %>
 
           <div class="actions">

@@ -113,6 +113,8 @@ describe 'エラー③：１回エラーになってからもう一度新規投�
       fill_in 'post[city]', with: post.city
     end
 
+    # エラー後も新規投稿ページのリンクが変わらないかどうかは重要ではないことが分かった
+
     it '自分の新しい投稿が正しく保存される' do
       expect{ click_button '投稿' }.to change{ Post.count }.by(1)
     end

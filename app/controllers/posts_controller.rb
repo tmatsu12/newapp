@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   def new
     if user_signed_in?
       @prefecture = Prefecture.find(params[:prefecture_id])
+      session[:prefecture] = params[:prefecture_id]
       @post = Post.new
       @user = current_user
     else
@@ -42,6 +43,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       @user = current_user
+      @prefecture = Prefecture.find(session[:prefecture])
       render :new
     end
   end
@@ -67,7 +69,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path(prefecture_id: @post.prefecture_id)
+    redirect_to user_path(@post.user)
   end
 
   private

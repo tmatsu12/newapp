@@ -4,6 +4,17 @@
 
       <%= render "posts/errors", obj:@post %>
 
+      <% if flash[:notice].present? %>
+        <div id="error_explanation">
+          <h3><%= flash[:notice].count %>件のエラーが発生しています：</h3>
+          <ul>
+            <% flash[:notice].each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group">
             <%= f.label :タイトル %><span class="text-danger">(入力必須)</span><br />

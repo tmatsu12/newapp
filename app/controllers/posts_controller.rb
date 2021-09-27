@@ -42,10 +42,9 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       @user = current_user
-      flash[:notice] = @post.errors.full_messages
-      @post = Post.new(post_params)
-      redirect_to new_post_path(prefecture_id: @prefecture.id)
-      # render :new
+      render :new
+      # flash[:notice] = @post.errors.full_messages
+      # redirect_to new_post_path(prefecture_id: @prefecture.id)
     end
   end
 

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @user = current_user
@@ -73,9 +74,19 @@ class PostsController < ApplicationController
     redirect_to user_path(@post.user)
   end
 
+
   private
 
   def post_params
     params.require(:post).permit(:title, :city, :body, :prefecture_id, :image, :evaluation, :body1, :body2, :body3)
   end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    if @post.user != current_user
+      flash[:notice] = 他のユーザーの情報は変更できません
+      redirect_to user_path(current_user)
+    end
+  end
+
 end

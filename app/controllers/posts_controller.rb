@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy], notice: "ログインしてください（簡単ログインが便利です）"
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -32,8 +32,8 @@ class PostsController < ApplicationController
       @post = Post.new
       @user = current_user
     else
-      flash[:notice]="新規登録して下さい（簡単ログインが便利です！）"
-      redirect_to new_user_registration_path
+      flash[:notice]="ログインして下さい（簡単ログインが便利です！）"
+      redirect_to new_user_session_path
     end
   end
 
@@ -84,7 +84,7 @@ class PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find(params[:id])
     if @post.user != current_user
-      flash[:notice] = "他のユーザーの情報は変更できません
+      flash[:notice] = "他のユーザーの情報は変更できません"
       redirect_to user_path(current_user)
     end
   end

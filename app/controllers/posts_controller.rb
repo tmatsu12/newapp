@@ -84,7 +84,7 @@ class PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find(params[:id])
     if @post.user != current_user
-      flash[:notice] = 他のユーザーの情報は変更できません
+      flash[:notice] = "他のユーザーの情報は変更できません
       redirect_to user_path(current_user)
     end
   end

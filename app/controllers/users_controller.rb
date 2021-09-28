@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def ensure_correct_user
     @user = User.find(params[:id])
     if @user != current_user
-      flash[:notice] = 他のユーザーの情報は変更できません
+      flash[:notice] = "他のユーザーの情報は変更できません"
       redirect_to user_path(current_user)
     end
   end

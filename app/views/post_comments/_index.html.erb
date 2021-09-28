@@ -9,9 +9,9 @@
       		<% end %>
       	</td>
       	<td><%= post_comment.comment %></td>
-      	<td><%= link_to '返信', new_post_post_comment_path(post, parent_id: post_comment.id), remote: true, class: 'btn btn-secondary' %></td>
+      	<td><%= link_to '返信', new_post_post_comment_path(post, parent_id: post_comment.id), remote: true, class: 'btn btn-secondary rounded-pill' %></td>
       	<% if current_user == post_comment.user %>
-        	<td><%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), class: 'btn btn-danger', method: :delete, remote: true %></td>
+        	<td><%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), class: 'btn btn-danger rounded-pill', method: :delete, remote: true %></td>
       	<% end %>
       </tr>
     <% end %>

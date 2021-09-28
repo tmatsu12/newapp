@@ -45,6 +45,7 @@ describe 'エラー②：フレンドリーフォワーディングの確認（�
     let(:user) { build(:user) }
 
     before do
+      click_link '新規登録'
       fill_in 'user[name]', with: user.name
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
@@ -75,7 +76,6 @@ describe 'エラー②：フレンドリーフォワーディングの確認（�
     let!(:user) { create(:user) }
 
     before do
-      click_link "ログイン"
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button "ログイン"
@@ -126,6 +126,30 @@ describe 'エラー③：１回エラーになってからもう一度新規投�
 
   end
 
+end
+
+describe 'エラー④：コメントに対する返信のテスト' do #ブラウザでは何故かコメントに対する返信フォームが表示される投稿とされない投稿がある
+
+  let!(:prefecture) { create(:prefecture) }
+  let!(:user) { create(:user) }
+  let!(:post) { create(:post, user_id: user.id, prefecture_id: prefecture.id) }
+
+  before do
+    visit new_user_session_path #投稿前にログインが必要
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
+    click_button "ログイン"
+    visit post_path(post.id)
+    fill_in 'post_comment[comment]', with: Faker::Lorem.characters(number: 10)
+    click_button 'コメントする'
+  end
+
+  context 'コメントを入力後に返信を送信するテスト' do
+    it '返信ボタンを押下後に返信フォームが表示される' do
+      click_on "返信"
+      expect(page).to have_content '返信をここに'
+    end
+  end
 
 end
 

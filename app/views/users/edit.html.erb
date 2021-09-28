@@ -44,8 +44,10 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "更新", class: "btn btn-success" %>
+          <%= f.submit "更新", class: "btn btn-success rounded-pill" %>
         </div>
+
+        <%= link_to "キャンセル", user_path(@user), class: "btn btn-secondary rounded-pill mt-3" %>
 
       <% end %>
 

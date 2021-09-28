@@ -102,11 +102,11 @@
             </tbody>
           </table>
 
-          <%= link_to "#{@post.prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @post.prefecture_id), class: "btn btn-success mb-3 rounded-pill" %>
+          <%= link_to "#{@post.prefecture.name}の投稿一覧に戻る", posts_path(prefecture_id: @post.prefecture_id), class: "btn btn-primary rounded-pill" %>
           <br>
           <% if @post.user == current_user %>
-          <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary my-4 rounded-pill" %>
-          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger my-4 rounded-pill" %>
+          <%= link_to "編集", edit_post_path(@post), class: "btn btn-success my-3 rounded-pill" %>
+          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger my-3 rounded-pill" %>
           <% end %>
 
           <div class="comment_error">

@@ -4,51 +4,39 @@
 
     <div class="col-9 mt-5 d-flex flex-wrap">
       <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 36) do %>
-          <%= image_tag 'shikoku/kagawa.jpeg', size: "190x190" %>
-          <p class="text-center">香川県(<%= Prefecture.find(36).posts.count %>件の投稿）</p>
+        <%= link_to posts_path(prefecture_id: 1) do %>
+          <%= image_tag 'tohoku/aomori.jpg', size: "220x190" %>
+          <p class="text-center">青森県(<%= Prefecture.find(1).posts.count %>件の投稿）</p>
         <% end %>
       </div>
       <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 35) do %>
-          <%= image_tag 'shikoku/tokushima.jpeg', size: "190x190" %>
-          <p class="text-center">徳島県(<%= Prefecture.find(35).posts.count %>件の投稿）</p>
+        <%= link_to posts_path(prefecture_id: 2) do %>
+          <%= image_tag 'tohoku/iwate.jpg', size: "220x190" %>
+          <p class="text-center">岩手県(<%= Prefecture.find(2).posts.count %>件の投稿）</p>
         <% end %>
       </div>
       <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 37) do %>
-          <%= image_tag 'shikoku/ehime.jpeg', size: "190x190" %>
-          <p class="text-center">愛媛県(<%= Prefecture.find(37).posts.count %>件の投稿）</p>
+        <%= link_to posts_path(prefecture_id: 3) do %>
+          <%= image_tag 'tohoku/miyagi.jpg', size: "220x190" %>
+          <p class="text-center">宮城県(<%= Prefecture.find(3).posts.count %>件の投稿）</p>
         <% end %>
       </div>
       <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 38) do %>
-          <%= image_tag 'shikoku/kouchi.jpeg', size: "190x190" %>
-          <p class="text-center">高知県(<%= Prefecture.find(38).posts.count %>件の投稿）</p>
+        <%= link_to posts_path(prefecture_id: 4) do %>
+          <%= image_tag 'tohoku/akita.jpg', size: "190x190" %>
+          <p class="text-center">秋田県(<%= Prefecture.find(4).posts.count %>件の投稿）</p>
         <% end %>
       </div>
       <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 36) do %>
-          <%= image_tag 'shikoku/kagawa.jpeg', size: "190x190" %>
-          <p class="text-center">香川県(<%= Prefecture.find(36).posts.count %>件の投稿）</p>
+        <%= link_to posts_path(prefecture_id: 5) do %>
+          <%= image_tag 'tohoku/yamagata.jpg', size: "190x190" %>
+          <p class="text-center">山形県(<%= Prefecture.find(5).posts.count %>件の投稿）</p>
         <% end %>
       </div>
       <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 35) do %>
-          <%= image_tag 'shikoku/tokushima.jpeg', size: "190x190" %>
-          <p class="text-center">徳島県(<%= Prefecture.find(35).posts.count %>件の投稿）</p>
-        <% end %>
-      </div>
-      <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 37) do %>
-          <%= image_tag 'shikoku/ehime.jpeg', size: "190x190" %>
-          <p class="text-center">愛媛県(<%= Prefecture.find(37).posts.count %>件の投稿）</p>
-        <% end %>
-      </div>
-      <div class="mb-3 mr-2">
-        <%= link_to posts_path(prefecture_id: 38) do %>
-          <%= image_tag 'shikoku/kouchi.jpeg', size: "190x190" %>
-          <p class="text-center">高知県(<%= Prefecture.find(38).posts.count %>件の投稿）</p>
+        <%= link_to posts_path(prefecture_id: 6) do %>
+          <%= image_tag 'tohoku/fukushima.jpg', size: "190x190" %>
+          <p class="text-center">福島県(<%= Prefecture.find(6).posts.count %>件の投稿）</p>
         <% end %>
       </div>
     </div>

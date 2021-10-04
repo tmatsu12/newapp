@@ -3,7 +3,7 @@
     <% if !post_comment.parent_id %>
       <!--<tr>-->
       	<!--<td>-->
-      	<div class="card">
+      	<div class="card mt-3">
       	  <div class="card-body">
       		<%= link_to user_path(post_comment.user) do %>
         		<%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.png", size: "35x35" %><br>
@@ -11,14 +11,14 @@
       		<% end %>
       	<!--</td>-->
       	<!--<td>-->
-      	  <%= post_comment.comment %>
+      	  <span class="mx-auto"><%= post_comment.comment %></span>
       	<!--</td>-->
       	<!--<td>-->
-      	  <%= link_to '返信', new_post_post_comment_path(post, parent_id: post_comment.id), remote: true, class: 'btn btn-secondary rounded-pill' %>
+      	  <%= link_to '返信', new_post_post_comment_path(post, parent_id: post_comment.id), remote: true %>
       	<!--</td>-->
       	<% if current_user == post_comment.user %>
         	<!--<td>-->
-        	  <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), class: 'btn btn-danger rounded-pill', method: :delete, remote: true %>
+        	  <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true %>
         	<!--</td>-->
       	<% end %>
       	  </div>

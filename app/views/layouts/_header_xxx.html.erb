@@ -5,9 +5,11 @@
         <%= image_tag "favicon.ico", size: '40x40' %>
         <span class="navbar-brand ml-1">Ruraloos</span>
       <% end %>
-
-      <div id="sp-menu">
-        <ul>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li><%= link_to ' My page', user_path(current_user), class: 'fas fa-user nav-link text-light' %></li>
           <li><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
@@ -18,24 +20,6 @@
         <% end %>
         </ul>
       </div>
-
-      <div id="hm-icon">
-        <a class="menu-trigger" href="#">
-          <span></span>
-          <span></span>
-          <span></span>
-        </a>
-      </div>
     </div>
   </nav>
 </header>
-
-<script>
-  $(function() {
-    $('.menu-trigger').on('click', function(event) {
-      $(this).toggleClass('active');
-      $('#sp-menu').fadeToggle();
-      event.preventDefault();
-    });
-  });
-</script>

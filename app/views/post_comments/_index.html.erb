@@ -1,27 +1,45 @@
-<tbody>
+<!--<tbody>-->
   <% post.post_comments.each do |post_comment| %>
     <% if !post_comment.parent_id %>
-      <tr>
-      	<td>
+      <!--<tr>-->
+      	<!--<td>-->
+      	<div class="card mt-3">
+      	  <div class="row">
+      	    <div class="col-md-2 ml-3 mr-0 my-3">
       		<%= link_to user_path(post_comment.user) do %>
         		<%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.png", size: "35x35" %><br>
         		<%= post_comment.user.name %>
       		<% end %>
-      	</td>
-      	<td><%= post_comment.comment %></td>
-      	<td><%= link_to '返信', new_post_post_comment_path(post, parent_id: post_comment.id), remote: true, class: 'btn btn-secondary rounded-pill' %></td>
+      		  </div>
+      	<!--</td>-->
+      	<!--<td>-->
+      	  <div class="col-md-9">
+      	  <div class="card-body">
+      	  <p><%= post_comment.comment %></p>
+      	<!--</td>-->
+      	<!--<td>-->
+
+      	  <%= link_to '返信', new_post_post_comment_path(post, parent_id: post_comment.id), remote: true %>
+      	<!--</td>-->
       	<% if current_user == post_comment.user %>
-        	<td><%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), class: 'btn btn-danger rounded-pill', method: :delete, remote: true %></td>
+        	<!--<td>-->
+        	  <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true %>
+        	<!--</td>-->
       	<% end %>
-      </tr>
+      	  </div>
+
+      	  </div>
+      	  </div>
+      	</div>
+      <!--</tr>-->
     <% end %>
 
 
     <% if post_comment.replies.any? %>
       <% post_comment.replies.each do |reply| %>
-        <tr>
+        <!--<tr>-->
           <%= render partial: 'post_comments/reply', locals: { reply: reply } %>
-        </tr>
+        <!--</tr>-->
       <% end %>
     <% end %>
 
@@ -29,4 +47,4 @@
 
 
   <% end %>
-</tbody>
+<!--</tbody>-->

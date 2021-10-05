@@ -24,7 +24,7 @@
 <!--sidebar・・・regionページのサイドバー-->
 <!--sidebar1との違い・・・regionページには新規投稿ボタンをつけなかった-->
 
-<%= link_to "新規に投稿する", new_post_path(prefecture_id: prefecture.id), class: "btn btn-info btn-block rounded-pill" %>
+<%= link_to "#{prefecture.name}の投稿をする", new_post_path(prefecture_id: prefecture.id), class: "btn btn-info btn-block rounded-pill" %>
 
 
 <table class="table table-striped table-hover mt-4">

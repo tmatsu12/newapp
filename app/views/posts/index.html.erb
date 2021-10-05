@@ -77,6 +77,8 @@
                 </div>
               <% end %>
             </div>
+
+            <%= paginate @posts %>
           <!--</div>-->
 
 
@@ -84,6 +86,8 @@
         <p>まだ投稿はありません</p>
       <% end %>
     </div>
+
+
 
     <div class="col-3 mt-5">
       <%= render partial: "users/sidebar1", locals: {user:@user, prefecture:@prefecture} %>

@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   end
   resources :post_images, only: [:new, :create, :destroy]
   resources :users, only: [:show, :edit, :update]
+  get 'search' => "searchs#search"
 end

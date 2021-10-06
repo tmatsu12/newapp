@@ -1,18 +1,6 @@
 require 'rails_helper'
 
-# describe 'ユーザーログイン前のテスト' do
-#   describe 'トップ画面のテスト' do
-#     before do
-#       visit root_path
-#     end
-
-#     context '表示内容の確認' do
-#       it 'URLが正しい' do
-#         expect(current_path).to eq '/'
-#       end
-#     end
-#   end
-# end
+#基本的にlet!とcreateで統一するが、必要に応じてbuildを使う
 
 describe 'エラー①：ユーザー新規登録のテスト' do
   let(:user) { build(:user) }

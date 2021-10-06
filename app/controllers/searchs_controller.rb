@@ -1,5 +1,4 @@
 class SearchsController < ApplicationController
-
   def search
     # @model = params[:model]
     @user = current_user
@@ -9,6 +8,7 @@ class SearchsController < ApplicationController
   end
 
   private
+
   def search_for(content, method)
     # if model == 'post'
     if method == 'perfect'

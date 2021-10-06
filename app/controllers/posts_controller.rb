@@ -17,32 +17,30 @@ class PostsController < ApplicationController
       @post = Post.new
       @user = current_user
     else
-      flash[:notice]="ログインして下さい（簡単ログインが便利です！）"
+      flash[:notice] = "ログインして下さい（簡単ログインが便利です！）"
       redirect_to new_user_session_path
     end
   end
 
   def show
-    #投稿をshowページで削除後マイページに飛ぶが、そこから左上の戻るボタンで戻るとエラーになってしまうのでその対策
+    # 投稿をshowページで削除後マイページに飛ぶが、そこから左上の戻るボタンで戻るとエラーになってしまうのでその対策
     begin
       @post = Post.find(params[:id])
       @post_comment = PostComment.new
       @prefecture = @post.prefecture
       @user = @post.user
-      @address = @post.prefecture.name+@post.city
+      @address = @post.prefecture.name + @post.city
       begin
         results = Geocoder.search(@address)
         @latlng = results.first.coordinates
       rescue
-        @latlng = [40.7828, -73.9653] #NewYork
+        @latlng = [40.7828, -73.9653] # NewYork
         flash[:notice] = "#{@prefecture.name}内の市町村ですか？市町村名を間違っていませんか？"
       end
     rescue
       redirect_to posts_path(prefecture_id: session[:prefecture])
     end
   end
-
-
 
   def create
     @post = Post.new(post_params)
@@ -81,7 +79,6 @@ class PostsController < ApplicationController
     redirect_to user_path(@post.user)
   end
 
-
   private
 
   def post_params
@@ -95,5 +92,4 @@ class PostsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
 end

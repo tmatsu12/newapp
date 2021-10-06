@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :post_images, only: [:new, :create, :destroy]
   resources :users, only: [:show, :edit, :update]
   get 'search' => "searchs#search"
+  get '/about' => 'homes#about'
 end

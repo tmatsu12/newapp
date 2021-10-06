@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-#基本的にlet!とcreateで統一するが、必要に応じてbuildを使う
+# 基本的にlet!とcreateで統一するが、必要に応じてbuildを使う
 
 describe 'エラー①：ユーザー新規登録のテスト' do
   let(:user) { build(:user) }
@@ -18,11 +18,10 @@ describe 'エラー①：ユーザー新規登録のテスト' do
       expect { click_button "新規登録" }.to change{ User.count }.by(1)
     end
   end
-
 end
 
 describe 'エラー②：フレンドリーフォワーディングの確認（新規登録・ログイン後の画面遷移先のテスト）' do
-  let!(:prefecture) { create(:prefecture) } #!がないとindex pageのidとnew pageのURLのidが一致しない？(prefecture.id = within(35..38)とした時) → そんなことはなかった
+  let!(:prefecture) { create(:prefecture) } # !がないとindex pageのidとnew pageのURLのidが一致しない？(prefecture.id = within(35..38)とした時) → そんなことはなかった
 
   before do
     visit '/posts?prefecture_id=' + prefecture.id.to_s
@@ -57,7 +56,6 @@ describe 'エラー②：フレンドリーフォワーディングの確認（�
     it '簡単ログイン後に新規投稿画面に遷移する' do
       expect(current_path).to eq '/posts/new?prefecture_id=' + prefecture.id.to_s
     end
-
   end
 
   context '新規投稿を押下後にログインした場合' do
@@ -72,9 +70,7 @@ describe 'エラー②：フレンドリーフォワーディングの確認（�
     it 'ログイン後に新規投稿画面に遷移する' do
       expect(current_path).to eq '/posts/new?prefecture_id=' + prefecture.id.to_s
     end
-
   end
-
 end
 
 describe 'エラー③：１回エラーになってからもう一度新規投稿するテスト' do
@@ -82,17 +78,14 @@ describe 'エラー③：１回エラーになってからもう一度新規投�
   let!(:user) { create(:user) }
   let(:post) { build(:post, user_id: user.id) }
 
-
   before do
-    visit new_user_session_path #投稿前にログインが必要
+    visit new_user_session_path # 投稿前にログインが必要
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button "ログイン"
   end
 
-
   context '空白で投稿してエラーを発生させた後の投稿成功のテスト' do
-
     before do
       visit '/posts?prefecture_id=' + prefecture.id.to_s
       click_link '新規に投稿する'
@@ -111,19 +104,16 @@ describe 'エラー③：１回エラーになってからもう一度新規投�
       click_button '投稿'
       expect(current_path).to eq '/posts/' + Post.last.id.to_s
     end
-
   end
-
 end
 
-describe 'エラー④：コメントに対する返信のテスト' do #ブラウザでは何故かコメントに対する返信フォームが表示される投稿とされない投稿がある
-
+describe 'エラー④：コメントに対する返信のテスト' do # ブラウザでは何故かコメントに対する返信フォームが表示される投稿とされない投稿がある
   let!(:prefecture) { create(:prefecture) }
   let!(:user) { create(:user) }
   let!(:post) { create(:post, user_id: user.id, prefecture_id: prefecture.id) }
 
   before do
-    visit new_user_session_path #投稿前にログインが必要
+    visit new_user_session_path # 投稿前にログインが必要
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button "ログイン"
@@ -138,8 +128,4 @@ describe 'エラー④：コメントに対する返信のテスト' do #ブラ�
       expect(page).to have_content '返信をここに'
     end
   end
-
 end
-
-
-
